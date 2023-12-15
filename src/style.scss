@@ -13,15 +13,14 @@ body {
 
 .container {
     margin: 0 auto;
-    margin-top: 5vh;
+    margin-top: 10px;
     width: 66%;
-    height: 80vh;
+    height: 70vh;
     border-radius: 8px;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
 
     .playerOneCard {
-        background: rgba(230, 230, 230, 0.7);
         text-align: center;
         display: grid;
         justify-content: center;
@@ -29,7 +28,6 @@ body {
     }
 
     .playerTwoCard {
-        background: rgba(230, 230, 230, 0.4);
         text-align: center;
         display: grid;
         justify-content: center;
@@ -67,6 +65,18 @@ body {
     }
 }
 
+.dice {
+    width: 3.5rem;
+    height: 3.5rem;
+    background: #fff;
+    margin: 0 auto;
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5vh;
+    cursor: pointer;
+}
+
 .menu {
     list-style: none;
     margin: 0 auto;
@@ -83,4 +93,13 @@ body {
         text-align: center;
         cursor: pointer;
     }
+}
+
+
+.role {
+    background: rgba(230, 230, 230, 0.7);
+}
+
+.notRole {
+    background: rgba(230, 230, 230, 0.4);
 }
