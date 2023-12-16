@@ -1,4 +1,6 @@
 import { state } from "./src/model.js";
+import winnigModal from "./src/components/winnigModal.js";
+import areUSureModal from "./src/components/areUSureModal.js";
 
 const diceEl = document.querySelector(".dice") as HTMLElement;
 const diceNumberEl = document.querySelector("#diceNumber") as HTMLElement;
@@ -16,7 +18,7 @@ const rollDiceBtn = document.querySelector("#rollDiceBtn") as HTMLElement;
 const holdBtn = document.querySelector("#holdBtn") as HTMLElement;
 
 
-const setDice = () => {
+const rollDice = () => {
     state.diceNumber = Math.floor((Math.random() * 10) - 3);
 
     for(let i = 1; state.diceNumber <= 0 ; i++) {
@@ -58,12 +60,7 @@ const setDice = () => {
 
     diceNumberEl.innerHTML = `${state.diceNumber}`;
 }
-rollDiceBtn.addEventListener("click", setDice);
-
-
-function restart() {
-    window.location.href = "/";
-}
+rollDiceBtn.addEventListener("click", rollDice);
 
 
 const holdScores = () => {
@@ -98,20 +95,40 @@ const holdScores = () => {
     }
 
     if(state.playerOne.score >= 100) {
-        alert("Player One Wins!");
-
-        setTimeout(() => {
-            restart();
-        }, 1000)
+        winnigModal.openModal(1, state.playerOne);
     }
 
     if(state.playerTwo.score >= 100) {
-        alert("Player Two Wins!");
-
-        setTimeout(() => {
-            restart();
-        }, 1000)
+        winnigModal.openModal(2, state.playerTwo);
     }
 }
 
 holdBtn.addEventListener("click", holdScores);
+newGameBtn.addEventListener("click", () => areUSureModal.openModal());
+
+
+export function restart() {
+    diceNumberEl.innerHTML = "1";
+
+    playerOneCardEl.classList.remove("notRole");
+    playerOneCardEl.classList.add("role");
+    playerTwoCardEl.classList.remove("role");
+    playerTwoCardEl.classList.add("notRole");
+
+    playerOneCurrentScoreEl.innerHTML = "0";
+    playerOneScoreEl.innerHTML = "0";
+
+    playerTwoCurrentScoreEl.innerHTML = "0";
+    playerTwoScoreEl.innerHTML = "0";
+
+    state.diceNumber = 0;
+    state.playerOne.currentScore = 0;
+    state.playerOne.score = 0;
+
+    state.playerTwo.currentScore = 0;
+    state.playerTwo.score = 0;
+
+    state.role = 1;
+
+    areUSureModal.closeModal();
+}

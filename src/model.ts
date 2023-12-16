@@ -1,4 +1,4 @@
-interface player {
+export interface player {
     currentScore: number;
     score: number;
 }
