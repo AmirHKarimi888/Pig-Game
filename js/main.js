@@ -82,7 +82,6 @@ const holdScores = () => {
     }
 };
 holdBtn.addEventListener("click", holdScores);
-newGameBtn.addEventListener("click", () => areUSureModal.openModal());
 export function restart() {
     diceNumberEl.innerHTML = "1";
     playerOneCardEl.classList.remove("notRole");
@@ -101,3 +100,4 @@ export function restart() {
     state.role = 1;
     areUSureModal.closeModal();
 }
+newGameBtn.addEventListener("click", () => areUSureModal.openModal());

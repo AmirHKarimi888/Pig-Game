@@ -102,9 +102,7 @@ const holdScores = () => {
         winnigModal.openModal(2, state.playerTwo);
     }
 }
-
 holdBtn.addEventListener("click", holdScores);
-newGameBtn.addEventListener("click", () => areUSureModal.openModal());
 
 
 export function restart() {
@@ -132,3 +130,5 @@ export function restart() {
 
     areUSureModal.closeModal();
 }
+
+newGameBtn.addEventListener("click", () => areUSureModal.openModal());
